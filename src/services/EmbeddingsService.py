@@ -3,8 +3,8 @@ from typing import List, Sequence
 from pyrdf2vec import RDF2VecTransformer
 from pyrdf2vec.embedders import Word2Vec
 from pyrdf2vec.graphs import KG
-from pyrdf2vec.samplers import PageRankSampler, UniformSampler
-from pyrdf2vec.walkers import AnonymousWalker, Walker, CommunityWalker, \
+from pyrdf2vec.samplers import UniformSampler
+from pyrdf2vec.walkers import AnonymousWalker, Walker, \
     HALKWalker, NGramWalker, RandomWalker, WalkletWalker
 import rdflib
 
