@@ -60,7 +60,7 @@ class QueryService:
         content = json.loads(response.text)
 
         if 'results' not in content or 'bindings' not in content['results']:
-            logger.log('Query for class %s returned not entities' % class_)
+            logger.log('Query for class %s returned no entities' % class_)
             abort(400)
 
         results = content['results']['bindings']
