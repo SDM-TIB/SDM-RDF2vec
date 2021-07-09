@@ -1,0 +1,20 @@
+version: '2.4'
+
+services:
+  app:
+    container_name: SDM-RDF2vec
+    build:
+      context: .
+      dockerfile: ./docker-config/SDM-RDF2vec/Dockerfile
+    environment:
+      APP_DEBUG: 'true'
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src/:/app
+    networks:
+      - SDM-RDF2vec
+
+networks:
+  SDM-RDF2vec:
+    driver: bridge
