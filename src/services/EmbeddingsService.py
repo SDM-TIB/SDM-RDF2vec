@@ -26,10 +26,9 @@ class EmbeddingsService:
     walkers = ['an', 'ha', 'ng', 'rw', 'wa']
 
     @staticmethod
-    def get_walker(sampler_id, walk_strategy, depth, walks_per_graph):
-        sampler = None
-        if sampler_id == 'uniform':
-            sampler = UniformSampler()
+    def get_walker(walk_strategy, depth, walks_per_graph):
+
+        sampler = UniformSampler()
 
         walkers = None
         if walk_strategy == 'an':
@@ -73,7 +72,7 @@ class EmbeddingsService:
 
     @classmethod
     def gen_embeddings(cls, source, entities, sg=1,
-                       walk_strategy='rw', sampler='uniform',
+                       walk_strategy='rw',
                        v_size=100, depth=4, walks_per_graph=25):
         endpoint = cls.endpoints[source]
         logger.log('Endpoint selected: %s' % endpoint)
@@ -88,7 +87,7 @@ class EmbeddingsService:
                         ],
                         ["http://dbpedia.org/ontology/humanDevelopmentIndex"],
                 ])
-        walkers = cls.get_walker(sampler, walk_strategy, depth, walks_per_graph)
+        walkers = cls.get_walker(walk_strategy, depth, walks_per_graph)
         sg = sg
         embeddings = cls.create_embeddings(kg, entities_uris, walkers, sg=sg, v_size=v_size)
         embeddings = embeddings[0]
