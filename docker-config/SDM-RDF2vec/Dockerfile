@@ -8,6 +8,9 @@ ADD ./src /app
 
 RUN pip install -r requirements.txt
 
+# replacing the connectors.py to support wikidata url
+RUN cp /app/custom/connectors.py /usr/local/lib/python3.7/site-packages/pyrdf2vec/connectors.py
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
